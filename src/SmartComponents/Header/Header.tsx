@@ -9,8 +9,9 @@ import UserMenu from '../../Components/UserMenu';
 import { useNavigation } from '../../hooks/useNavigation';
 import LoadingOverlay from '../../Components/LoadingOverlay';
 
+
 export const Header: React.FC = () => {
-    const { loading, data, error } = useNavigation();
+    const { loading, data } = useNavigation();
 
     const logo = 'AWSM Billing';
 
