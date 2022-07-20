@@ -5,22 +5,21 @@ import { useTypeSelector } from '../hooks/useTypeSelector';
 import { v4 as uuidv4 } from 'uuid';
 
 const ErrorSnackBar: FC = () => {
-    const { open, message } = useTypeSelector(state => state.errorSnackBar.snackbar)
+    const { open, error } = useTypeSelector(state => state.errorSnackBar.snackbar)
     const { closeError } = useAction();
     const alertID = uuidv4();
 
     return (
         <>
-            {message && open &&
+            {open &&
                 <Alert
                     severity="error"
-                    onClose={() => {
-                        closeError();
-                    }}
+                    onClose={closeError}
                     key={alertID}>
-                    <AlertTitle>Error {message.toString()}</AlertTitle>
-                    {message.toString()}
-                </Alert>}
+                    <AlertTitle>{error.title}</AlertTitle>
+                    {error.message}
+                </Alert>
+            }
         </>
     )
 }

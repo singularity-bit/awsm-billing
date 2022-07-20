@@ -10,13 +10,25 @@ type ProviderProps = {
 }
 export const CustomApolloProvider: FC<ProviderProps> = ({ children }) => {
   const { triggerError } = useAction();
+
   const errLink = onError(({ graphQLErrors, networkError }) => {
+
     if (networkError) {
-      triggerError({ message: networkError.name });
+      triggerError({
+        error: {
+          title: 'Network Error',
+          message: networkError.message
+        }
+      });
     }
 
     if (graphQLErrors) {
-      triggerError({ message: graphQLErrors[0].message });
+      triggerError({
+        error: {
+          title: 'GraphQL Error',
+          message: graphQLErrors[0].message
+        }
+      });
 
     }
   });

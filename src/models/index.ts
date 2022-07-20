@@ -1,6 +1,3 @@
-import { ServerError, ServerParseError } from "@apollo/client";
-import { GraphQLError } from "graphql";
-
 
 export type Links={
     name:string;
@@ -17,13 +14,17 @@ export interface HeaderProps{
     anchorEl?: null | HTMLElement
 }
 
+interface IMessage{
+  title:string | null;
+  message:string | null;
+}
 export interface ISnackBar{
   open: boolean;
-  message: string | string[]| Error | ServerError | ServerParseError|  GraphQLError[] | null;
+  error: IMessage;
 }
 export interface ISnackbarModel {
   handleClose: ()=>void;
-  handleOpen: ({message}:ISnackBar)=>void;
+  handleOpen: ({error}:ISnackBar)=>void;
 }
 
 export interface SnackBarModel{
@@ -37,11 +38,11 @@ export enum ActionTypes{
 
 interface TriggerErrorAction{
   type:ActionTypes.TRIGGER_ERROR
-  payload:Pick<ISnackBar,'message'>;
+  payload:Pick<ISnackBar,'error'>;
 }
 interface ClearErrorAction{
   type:ActionTypes.CLEAR_ERROR
-  payload:Pick<ISnackBar,'message'>;
+  payload:Pick<ISnackBar,'error'>;
 }
 
 export type ErrorAction=TriggerErrorAction | ClearErrorAction
