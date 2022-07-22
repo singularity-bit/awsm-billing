@@ -1,7 +1,5 @@
 import React from 'react'
+import { Children } from '../../models'
 
-type Props = {
-    children?: React.ReactNode
-}
 
-export const BodyWrapper: React.FunctionComponent<Props> = ({ children }) => <>{children}</>
+export const BodyWrapper: React.FunctionComponent<Children> = ({ children }) => <>{children}</>

@@ -11,10 +11,12 @@ import Form from '../Components/Form/Form'
 import { useFormik } from 'formik'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { loginSchema } from '../models/schemaValidations'
+import { useAction } from '../hooks/useAction'
+import { useLogin } from '../hooks/useLogin'
 
 
 export const Login: FC = () => {
-
+    const { data, loginUser } = useLogin();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -22,7 +24,11 @@ export const Login: FC = () => {
         },
         validationSchema: loginSchema,
         onSubmit: (values) => {
-            console.log('submit values', values)
+            loginUser({
+                variables: {
+                    ...values
+                }
+            }).then(res => console.log('login res', res.data.login.token))
         },
         validateOnBlur: true
     });

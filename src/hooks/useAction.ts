@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
-import * as ActionCreators from '../store/action-creator/errorSnackBar'
+import * as ActionCreators from '../store/action-creator/index'
 export const useAction=()=>{
     const dispatch=useDispatch()
     return bindActionCreators(ActionCreators,dispatch)

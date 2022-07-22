@@ -2,13 +2,11 @@ import { ApolloClient, ApolloProvider, from, HttpLink, InMemoryCache } from "@ap
 import { onError } from "apollo-link-error";
 import { useAction } from "../hooks/useAction";
 import React, { FC } from "react";
+import { Children } from "../models";
 
 
 
-type ProviderProps = {
-  children?: JSX.Element
-}
-export const CustomApolloProvider: FC<ProviderProps> = ({ children }) => {
+export const CustomApolloProvider: FC<Children> = ({ children }) => {
   const { triggerError } = useAction();
 
   const errLink = onError(({ graphQLErrors, networkError }) => {

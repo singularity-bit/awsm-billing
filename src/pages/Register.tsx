@@ -61,7 +61,6 @@ const Register = (props: Props) => {
                     fullWidth
                     id="lastName"
                     label="Last Name"
-                    autoFocus
                 />
                 <TextField
                     margin="normal"
@@ -73,7 +72,6 @@ const Register = (props: Props) => {
                     fullWidth
                     id="cnp"
                     label="CNP"
-                    autoFocus
                 />
                 <TextField
                     margin="normal"
@@ -85,7 +83,6 @@ const Register = (props: Props) => {
                     fullWidth
                     id="email"
                     label="Email Address"
-                    autoFocus
                 />
                 <TextField
                     margin="normal"
@@ -98,7 +95,6 @@ const Register = (props: Props) => {
                     label="Password"
                     type="password"
                     id="password"
-                    autoComplete="current-password"
                 />
             </Form.Body>
 

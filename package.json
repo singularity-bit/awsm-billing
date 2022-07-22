@@ -19,6 +19,7 @@
     "@types/react-redux": "^7.1.24",
     "apollo-link-context": "^1.0.20",
     "apollo-link-error": "^1.1.13",
+    "dotenv": "^16.0.1",
     "formik": "^2.2.9",
     "graphql": "^16.5.0",
     "notistack": "^2.0.5",

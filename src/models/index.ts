@@ -1,3 +1,8 @@
+import React from "react";
+
+export type Children={
+  children:React.ReactNode | React.ReactNode[]
+}
 
 export type Links={
     name:string;
@@ -33,7 +38,9 @@ export interface SnackBarModel{
 
 export enum ActionTypes{
   TRIGGER_ERROR='TRIGGER_ERROR',
-  CLEAR_ERROR='CLEAR_ERROR'
+  CLEAR_ERROR='CLEAR_ERROR',
+  LOGIN='LOGIN',
+  LOGOUT='LOGOUT',
 }
 
 interface TriggerErrorAction{
@@ -45,6 +52,39 @@ interface ClearErrorAction{
   payload:Pick<ISnackBar,'error'>;
 }
 
+export interface ILoginAction{
+  type:ActionTypes.LOGIN
+  payload: IUser
+}
+
+export interface ILogoutAction{
+  type:ActionTypes.LOGOUT
+  payload: IUser
+}
+export type UserAuthAction=ILoginAction | ILogoutAction
 export type ErrorAction=TriggerErrorAction | ClearErrorAction
 
+export enum Roles{
+  ADMIN='ADMIN',
+  CLIENT='CLIENT',
+  GUEST='GUEST'
+}
+export enum Permissions{
+  ANY='ANY',
+  OWN='OWN'
+}
+interface IUserData{
+  id:string | null;
+  email:string | null;
+  role:Roles | null;
+  permissions:Permissions | null ;
+  
+}
+export type LoginData={
+  email:string;
+  password:string;
+}
+export interface IUser extends IUserData{
+  token:string | null;
 
+}
