@@ -6,12 +6,16 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import React, { FC, useMemo, useState } from 'react'
+import { useAction } from '../hooks/useAction'
+import { usePublicUserData } from '../hooks/usePublicUserData'
 import { HeaderProps } from '../models'
 
 
 const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
     const paths = useMemo(() => (settings.map(item => item)), [settings]);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+    const { logoutAction } = useAction();
+    const user = usePublicUserData();
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -26,7 +30,7 @@ const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
                     onClick && onClick(event);
                     handleOpenUserMenu(event)
                 }} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt={user.data?.currentUser.user.firstName} src="/static/images/avatar/2.jpg" />
                 </IconButton>
             </Tooltip>
             <Menu
@@ -50,7 +54,7 @@ const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
             >
                 {paths.map((setting) => (
                     <MenuItem key={setting.path} onClick={() => {
-                        onClose && onClose()
+                        onClose && onClose();
                         handleCloseUserMenu();
                     }}>
                         <Link href={setting.path} underline="none" color="inherit">
@@ -58,6 +62,14 @@ const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
                         </Link>
                     </MenuItem>
                 ))}
+                <MenuItem key='menu_logout' onClick={() => {
+                    logoutAction();
+                    onClose && onClose();
+                    handleCloseUserMenu();
+                }}>
+                    logout
+
+                </MenuItem>
             </Menu>
         </Box>
     )

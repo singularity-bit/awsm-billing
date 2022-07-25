@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { useAppSelector } from "./hooks/redux";
+import React from "react";
 import { useAction } from "./hooks/useAction";
 import { AppRoutes } from "./routes/AppRoutes";
 
 function App() {
   const { checkTokenAction } = useAction();
-  useEffect(() => {
-    checkTokenAction();
-  }, []);
+  const token = localStorage.getItem('token');
+  if (token) {
+    checkTokenAction()
+  }
   return (
     <div className="App">
       <AppRoutes />

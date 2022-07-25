@@ -9,6 +9,8 @@ import { store } from './store';
 import { CustomApolloProvider } from './utils/initApollo';
 import ErrorSnackBar from './Components/ErrorSnackBar';
 
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

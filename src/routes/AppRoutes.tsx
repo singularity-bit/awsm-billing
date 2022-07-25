@@ -7,19 +7,18 @@ import Layout from "../SmartComponents/Layout/Layout";
 import NotFound404 from "../pages/NotFound404";
 import { Navigate } from "react-router-dom";
 import Register from "../pages/Register";
-import { useAppSelector } from "../hooks/redux";
 import PrivateRoute from "./PrivateRoute";
 
 export const AppRoutes = () => {
-  const userState = useAppSelector((state) => state.authentificate);
 
   return (
     <Routes>
-      <Route element={<PrivateRoute user={userState} redirectPath="/login" />}>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Homepage />} />
+      <Route element={<Layout />}>
+        <Route element={<PrivateRoute />}>
+          <Route element={<Homepage />} index />
           <Route path="invoices" element={<Invoices />} />
         </Route>
+        <Route path="*" element={<NotFound404 />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
@@ -27,7 +26,6 @@ export const AppRoutes = () => {
 
       <Route path="/logout" element={<Navigate replace to={"/login"} />} />
 
-      <Route path="*" element={<NotFound404 />} />
-    </Routes>
+    </Routes >
   );
 };

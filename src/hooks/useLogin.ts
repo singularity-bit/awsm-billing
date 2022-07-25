@@ -1,12 +1,11 @@
 import { gql, useMutation } from "@apollo/client";
-import { IUserData } from "../models";
 
 export const LOGIN = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-    }
+  mutation Login($input: LoginInput) {
+  login(input: $input) {
+    token
   }
+}
 `;
 
 export const useLogin = () => {

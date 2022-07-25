@@ -106,3 +106,23 @@ export type LoginData = {
   email: string;
   password: string;
 };
+
+export interface IUserPublicData{
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: Roles;
+  permissions: Permissions;
+}
+export interface TokenData{
+  currentUser:{
+    user:IUserPublicData
+  }
+}
+
+export enum LayoutAlign{
+  CENTER='center',
+  LEFT='left',
+  RIGHT='right',
+  SPACE_BETWEEN='space_between'
+}

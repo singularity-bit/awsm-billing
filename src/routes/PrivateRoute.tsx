@@ -1,18 +1,14 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
-import { ICheckAuth } from "../models";
+import { Navigate, Outlet, RouteProps } from "react-router-dom";
+import { useAppSelector } from "../hooks/redux";
 
-type Props = {
-  user: ICheckAuth;
-  redirectPath: string;
-  children?: JSX.Element;
-};
 
-const PrivateRoute = ({ user, redirectPath = "/login", children }: Props) => {
-  if (!user.isAuth) {
-    return <Navigate to={redirectPath} replace />;
-  }
-  return children ? children : <Outlet />;
+
+
+const PrivateRoute: React.FC<RouteProps> = () => {
+  const userState = useAppSelector((state) => state.authentificate);
+
+  return userState.isAuth ? <Outlet /> : <Navigate to={{ pathname: '/login' }} />
 };
 
 export default PrivateRoute;
