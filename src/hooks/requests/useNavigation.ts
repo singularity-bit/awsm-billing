@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { DataResponse } from '../models';
+import { DataResponse } from '../../models';
 
 export const GET_NAVIGATION = gql`
   query Query {

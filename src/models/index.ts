@@ -66,6 +66,7 @@ export interface ICheckAuth {
 }
 export interface ICheckTokenAction {
   type: ActionTypes.CHECK_TOKEN;
+  payload:Pick<ICheckAuth,'isAuth'>
 }
 
 export interface ILogoutAction {
@@ -81,14 +82,14 @@ export interface IClearUserAction {
 
 export interface ISetUserAction {
   type: ActionTypes.SET_USER;
-  payload: IUserData;
+  payload: IUserPublicData;
 }
 export type GetUserAction = IGetUserAction | IClearUserAction | ISetUserAction;
 export type AuthAction = ILoginAction | ILogoutAction | ICheckTokenAction;
 export type ErrorAction = TriggerErrorAction | ClearErrorAction;
 
 export enum Roles {
-  ADMIN = "ADMIN",
+  ADmax = "ADmax",
   CLIENT = "CLIENT",
   GUEST = "GUEST",
 }
@@ -108,11 +109,11 @@ export type LoginData = {
 };
 
 export interface IUserPublicData{
-  email: string;
-  firstName: string;
-  lastName: string;
-  role: Roles;
-  permissions: Permissions;
+  email: string|null;
+  firstName: string|null;
+  lastName: string|null;
+  role: Roles|null;
+  permissions: Permissions|null;
 }
 export interface TokenData{
   currentUser:{
@@ -126,3 +127,27 @@ export enum LayoutAlign{
   RIGHT='right',
   SPACE_BETWEEN='space_between'
 }
+export enum ButtonLayout{
+  STACK='stack',
+  ROW='row'
+}
+
+ enum ScreenSize {
+  mobileS= '320px',
+  mobileM='375px',
+  mobileL='425px',
+  tablet= '768px',
+  laptop='1024px',
+  laptopL='1440px',
+  desktop='2560px'
+}
+export const device = {
+  mobileS:`(max-width: ${ScreenSize.mobileS})`,
+  mobileM:`(max-width: ${ScreenSize.mobileM})`,
+  mobileL:`(max-width: ${ScreenSize.mobileL})`,
+  tablet: `(max-width: ${ScreenSize.tablet})`,
+  laptop:`(max-width: ${ScreenSize.laptop})`,
+  laptopL:`(max-width: ${ScreenSize.laptopL})`,
+  desktop:`(max-width: ${ScreenSize.desktop})`,
+  desktopL:`(max-width: ${ScreenSize.desktop})`
+};

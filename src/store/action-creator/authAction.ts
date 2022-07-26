@@ -26,10 +26,13 @@ export const logoutAction = () => {
     });
   };
 };
-export const checkTokenAction = () => {
+export const checkTokenAction = ({ isAuth }:Pick<ICheckAuth,'isAuth'>) => {
   return (dispatch: Dispatch<ICheckTokenAction>) => {
     dispatch({
       type: ActionTypes.CHECK_TOKEN,
+      payload:{
+        isAuth
+      }
     });
   };
 };

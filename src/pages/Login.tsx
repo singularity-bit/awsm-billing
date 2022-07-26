@@ -11,8 +11,8 @@ import Form from "../Components/Form/Form";
 import { useFormik } from "formik";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { loginSchema } from "../models/schemaValidations";
-import { useAction } from "../hooks/useAction";
-import { useLogin } from "../hooks/useLogin";
+import { useAction } from "../hooks/requests/useAction";
+import { useLogin } from "../hooks/requests/useLogin";
 import { useNavigate } from "react-router-dom";
 
 export const Login: FC = () => {

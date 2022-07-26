@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Navigation from '../../Components/Navigation';
 import UserMenu from '../../Components/UserMenu';
-import { useNavigation } from '../../hooks/useNavigation';
+import { useNavigation } from '../../hooks/requests/useNavigation';
 import LoadingOverlay from '../../Components/LoadingOverlay';
 
 

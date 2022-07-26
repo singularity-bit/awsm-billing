@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Alert, AlertTitle } from "@mui/material";
-import { useAction } from '../hooks/useAction';
+import { useAction } from '../hooks/requests/useAction';
 import { useTypeSelector } from '../hooks/useTypeSelector';
 import { v4 as uuidv4 } from 'uuid';
 

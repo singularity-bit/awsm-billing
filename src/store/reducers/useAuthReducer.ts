@@ -1,4 +1,3 @@
-import { Action } from "history";
 import { ActionTypes, AuthAction, ICheckAuth } from "../../models";
 
 let model: ICheckAuth = {
@@ -25,10 +24,10 @@ export const useAuthReducer = (
         token: null,
       });
     case ActionTypes.CHECK_TOKEN:
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
 
       return (state = {
-        isAuth: token ? true : false,
+        isAuth: action.payload.isAuth,
         token: token,
       });
     default:

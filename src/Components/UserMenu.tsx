@@ -6,8 +6,8 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import React, { FC, useMemo, useState } from 'react'
-import { useAction } from '../hooks/useAction'
-import { usePublicUserData } from '../hooks/usePublicUserData'
+import { useAction } from '../hooks/requests/useAction'
+import { usePublicUserData } from '../hooks/requests/usePublicUserData'
 import { HeaderProps } from '../models'
 
 
@@ -30,7 +30,7 @@ const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
                     onClick && onClick(event);
                     handleOpenUserMenu(event)
                 }} sx={{ p: 0 }}>
-                    <Avatar alt={user.data?.currentUser.user.firstName} src="/static/images/avatar/2.jpg" />
+                    <Avatar alt={user.data?.currentUser?.user?.firstName || ''} src="/static/images/avatar/2.jpg" />
                 </IconButton>
             </Tooltip>
             <Menu

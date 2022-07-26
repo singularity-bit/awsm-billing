@@ -1,20 +1,20 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import {
-  ILoginAction,
   ActionTypes,
   GetUserAction,
-  IUserData,
+  IUserPublicData,
 } from "../../models";
 
-export const setUserAction = ({ email, id, permissions, role }: IUserData) => {
+export const setUserAction = ({ email,  permissions, role ,firstName,lastName}: IUserPublicData) => {
   return (dispatch: Dispatch<GetUserAction>) => {
     dispatch({
       type: ActionTypes.SET_USER,
       payload: {
-        id,
         email,
         role,
         permissions,
+        firstName,
+        lastName
       },
     });
   };

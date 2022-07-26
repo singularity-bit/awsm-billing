@@ -7,7 +7,7 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { onError } from "apollo-link-error";
-import { useAction } from "../hooks/useAction";
+import { useAction } from "../hooks/requests/useAction";
 import React, { FC } from "react";
 import { Children } from "../models";
 

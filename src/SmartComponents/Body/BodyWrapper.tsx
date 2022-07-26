@@ -5,7 +5,7 @@ import { Children } from '../../models'
 
 export const BodyWrapper: React.FunctionComponent<Children> = ({ children }) =>
     <Grid container spacing={12} justifyContent='center' pt={5}>
-        <Grid item xs={12} md={9}>
+        <Grid item md={9}>
             {children}
         </Grid>
     </Grid>

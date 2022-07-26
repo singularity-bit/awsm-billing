@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { TokenData } from "../models";
+import { TokenData } from "../../models";
 
 export const USER=gql`
 query User {

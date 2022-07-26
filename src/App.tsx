@@ -1,12 +1,12 @@
 import React from "react";
-import { useAction } from "./hooks/useAction";
+import { useAction } from "./hooks/requests/useAction";
 import { AppRoutes } from "./routes/AppRoutes";
 
 function App() {
   const { checkTokenAction } = useAction();
   const token = localStorage.getItem('token');
   if (token) {
-    checkTokenAction()
+    checkTokenAction({ isAuth: true })
   }
   return (
     <div className="App">
