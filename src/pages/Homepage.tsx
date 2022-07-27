@@ -2,17 +2,19 @@
 import { Box, Button } from '@mui/material';
 import React from 'react'
 import Headline from '../Components/Headline/Headline';
-import { usePublicUserData } from '../hooks/requests/usePublicUserData';
 import { LayoutAlign } from '../models';
 import AddIcon from '@mui/icons-material/Add';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import { useAppSelector } from '../hooks/redux';
+import Dashboard from '../Components/Dashboard';
 export const Homepage: React.FC = () => {
-    const user = usePublicUserData();
+    const user = useAppSelector(state => state.user);
+
     return (
         <>
             <Headline
                 title='Overview'
-                subtitle={`Homepage ${user.data?.currentUser?.user?.email}`}
+                subtitle={`Weclome ${user.firstName} ${user.lastName}`}
                 variant={LayoutAlign.SPACE_BETWEEN}
             >
                 <Box display='flex' justifyContent='space-between' alignItems='center' sx={{
@@ -24,6 +26,7 @@ export const Homepage: React.FC = () => {
                     <Button variant="contained" size='large' startIcon={<AddIcon fontSize='small' />} >Create Invoice</Button>
                 </Box>
             </Headline>
+            <Dashboard />
         </>
     )
 }

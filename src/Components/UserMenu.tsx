@@ -6,8 +6,8 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import React, { FC, useMemo, useState } from 'react'
+import { useAppSelector } from '../hooks/redux'
 import { useAction } from '../hooks/requests/useAction'
-import { usePublicUserData } from '../hooks/requests/usePublicUserData'
 import { HeaderProps } from '../models'
 
 
@@ -15,7 +15,7 @@ const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
     const paths = useMemo(() => (settings.map(item => item)), [settings]);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const { logoutAction } = useAction();
-    const user = usePublicUserData();
+    const user = useAppSelector(state => state.user);
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -30,7 +30,7 @@ const UserMenu: FC<HeaderProps> = ({ settings, onClick, onClose }) => {
                     onClick && onClick(event);
                     handleOpenUserMenu(event)
                 }} sx={{ p: 0 }}>
-                    <Avatar alt={user.data?.currentUser?.user?.firstName || ''} src="/static/images/avatar/2.jpg" />
+                    <Avatar alt={user?.firstName || ''} src="/static/images/avatar/2.jpg" />
                 </IconButton>
             </Tooltip>
             <Menu

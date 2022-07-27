@@ -1,5 +1,5 @@
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import LoadingButton from '@mui/lab/LoadingButton';
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
@@ -16,7 +16,7 @@ import { useLogin } from "../hooks/requests/useLogin";
 import { useNavigate } from "react-router-dom";
 
 export const Login: FC = () => {
-    const { loginUser } = useLogin();
+    const { loginUser, loading } = useLogin();
     const { loginAction } = useAction();
 
     let navigate = useNavigate();
@@ -87,14 +87,15 @@ export const Login: FC = () => {
             </Form.Body>
 
             <Form.Footer>
-                <Button
+                <LoadingButton
                     type="submit"
                     fullWidth
                     variant="contained"
+                    loading={loading}
                     sx={{ mt: 3, mb: 2 }}
                 >
                     Sign In
-                </Button>
+                </LoadingButton>
                 <Grid container>
                     <Grid item>
                         <Link href="/register" variant="body2">

@@ -151,3 +151,8 @@ export const device = {
   desktop:`(max-width: ${ScreenSize.desktop})`,
   desktopL:`(max-width: ${ScreenSize.desktop})`
 };
+export type DashboardCardProps={
+  title?: string;
+  icon?: 'GroupOutlinedIcon' | 'ReceiptOutlinedIcon' | 'DownloadingOutlinedIcon' | 'PaidOutlinedIcon'
+  content?: string | number
+}
