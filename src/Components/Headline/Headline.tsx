@@ -15,7 +15,7 @@ const Headline: React.FC<Props> = ({ subtitle, title, variant, children }) => {
     return (
         <S.Wrapper className={variant}>
             <S.Headline className={variant}>
-                <Typography variant='h6' >
+                <Typography variant='h4' fontWeight={500}>
                     {title}
                 </Typography>
                 <Typography variant='subtitle1' >

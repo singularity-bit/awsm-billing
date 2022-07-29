@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import React, { FC } from 'react'
 import { DashboardCardProps } from '../models'
 import DashboardCard from './DashboardCard/DashboardCard'
@@ -36,7 +36,6 @@ const Dashboard: FC = () => {
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 4, md: 12 }}
-            pt={5}
         >
             {data.map((item, id) => {
                 return <Grid item xs={4} sm={4} md={3} key={`${item.title}_${id}`}>

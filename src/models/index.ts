@@ -89,13 +89,18 @@ export type AuthAction = ILoginAction | ILogoutAction | ICheckTokenAction;
 export type ErrorAction = TriggerErrorAction | ClearErrorAction;
 
 export enum Roles {
-  ADmax = "ADmax",
+  ADMIN = "ADMIN",
   CLIENT = "CLIENT",
   GUEST = "GUEST",
 }
 export enum Permissions {
   ANY = "ANY",
   OWN = "OWN",
+}
+export enum InvoiceStatus{
+  PAID='PAID',
+  PENDING='PENDING',
+
 }
 export interface IUserData {
   id: string | null;
@@ -155,4 +160,13 @@ export type DashboardCardProps={
   title?: string;
   icon?: 'GroupOutlinedIcon' | 'ReceiptOutlinedIcon' | 'DownloadingOutlinedIcon' | 'PaidOutlinedIcon'
   content?: string | number
+}
+
+export type TransactionProps={
+  customerName:string;
+  project:string;
+  invoiceNr:string;
+  status:'PAID'|'PENDING';
+  amount:string;
+  date:string;
 }

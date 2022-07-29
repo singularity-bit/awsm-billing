@@ -69,13 +69,13 @@ const DashboardCard: FC<DashboardCardProps> = ({ content, icon, title }) => {
     return (
         <S.Wrapper>
             {createIcon({ icon })}
-            <Typography variant="overline" gutterBottom component="div" pt={1} sx={{
+            <Typography variant="overline" gutterBottom component="div" fontWeight={500} pt={1} sx={{
                 textTransform: 'uppercase'
 
             }}>
                 {title}
             </Typography>
-            <Typography variant="h4" gutterBottom component="div" sx={{
+            <Typography variant="h4" gutterBottom component="div" fontWeight={500} sx={{
                 textTransform: 'uppercase'
             }}>
                 {content}
