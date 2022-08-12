@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import React, { FC } from 'react'
+import { device } from '../../models';
 import * as S from './Tile.styles'
 type Props = {
   title?: string;
@@ -9,7 +10,7 @@ type Props = {
 
 const Tile: FC<Props> = ({ title, children }) => {
   return (
-    <S.Wrapper display={'flex'} flexDirection='column' justifyContent='space-between' p={3}>
+    <S.Wrapper display={'flex'} flexDirection='column' justifyContent='space-between' p={3} >
       <Typography variant='h5' fontWeight={500} pb={2}>
         {title}
       </Typography>

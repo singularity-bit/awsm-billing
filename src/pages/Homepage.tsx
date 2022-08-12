@@ -1,14 +1,14 @@
 
-import { Box, Button, Divider, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import React from 'react'
 import Headline from '../Components/Headline/Headline';
-import { InvoiceStatus, LayoutAlign, TransactionProps } from '../models';
+import { LayoutAlign, TransactionProps } from '../models';
 import AddIcon from '@mui/icons-material/Add';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { useAppSelector } from '../hooks/redux';
 import Dashboard from '../Components/Dashboard';
-import TransactionItem from '../Components/TransactionItem/TransactionItem';
 import Tile from '../Components/Tile/Tile';
+import Table from '../Components/Table/Table';
 export const Homepage: React.FC = () => {
     const user = useAppSelector(state => state.user);
     const transactions: TransactionProps[] = [
@@ -54,7 +54,7 @@ export const Homepage: React.FC = () => {
         }
     ]
     return (
-        <Grid container direction="column" justifyContent="flex-start" spacing={6}>
+        <Grid container direction="column" wrap='nowrap' spacing={6}>
             <Grid item>
                 <Headline
                     title='Overview'
@@ -75,26 +75,8 @@ export const Homepage: React.FC = () => {
                 <Dashboard />
             </Grid>
             <Grid item>
-
                 <Tile title='Recent Transactions'>
-                    {
-                        transactions.map((item, id) => {
-                            return (
-                                <>
-                                    <TransactionItem
-                                        amount={item.amount}
-                                        customerName={item.customerName}
-                                        date={item.date}
-                                        invoiceNr={item.invoiceNr}
-                                        project={item.project}
-                                        status={item.status}
-                                        key={`${item.invoiceNr}_${id}`}
-                                    />
-                                    <Divider orientation="horizontal" flexItem key={`divider_${id}`} />
-                                </>
-                            )
-                        })
-                    }
+                    <Table rows={transactions} />
                 </Tile>
             </Grid>
 

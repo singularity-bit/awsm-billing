@@ -13,7 +13,7 @@ import { Children } from "../models";
 
 export const CustomApolloProvider: FC<Children> = ({ children }) => {
   const { triggerError } = useAction();
-  //test
+
   const errLink = onError(({ graphQLErrors, networkError }) => {
     if (networkError) {
       triggerError({

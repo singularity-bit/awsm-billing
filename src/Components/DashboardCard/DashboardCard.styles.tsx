@@ -4,6 +4,8 @@ import { device } from "../../models";
 
 
 export const Wrapper = styled(Box)`
+min-width: 212px;
+min-height: 112px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
