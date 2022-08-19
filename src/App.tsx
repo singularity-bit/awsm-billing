@@ -1,5 +1,5 @@
 import React from "react";
-import { useAction } from "./hooks/requests/useAction";
+import { useAction } from "./hooks/useAction";
 import { AppRoutes } from "./routes/AppRoutes";
 
 function App() {

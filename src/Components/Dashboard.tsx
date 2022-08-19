@@ -1,58 +1,44 @@
-import { Grid } from '@mui/material'
+import { Grid, useMediaQuery } from '@mui/material'
 import React, { FC } from 'react'
-import { DashboardCardProps } from '../models'
+import { useDashboard } from '../hooks/requests/useDashboard'
+import { device } from '../models'
 import DashboardCard from './DashboardCard/DashboardCard'
+import LoadingOverlay from './LoadingOverlay'
 
 
 
 const Dashboard: FC = () => {
-    const data: DashboardCardProps[] = [
-        {
-            icon: 'GroupOutlinedIcon',
-            title: 'clients',
-            content: 12
-        },
-        {
-            icon: 'ReceiptOutlinedIcon',
-            title: 'invoices',
-            content: 14
-        },
-        {
-            icon: 'DownloadingOutlinedIcon',
-            title: 'invoiced',
-            content: '$ 65K'
-        },
-        {
-            icon: 'PaidOutlinedIcon',
-            title: 'paid',
-            content: '$ 49K'
-        }
-    ]
+    const { data, loading } = useDashboard();
+    const isMobile = useMediaQuery(device.laptopL);
 
     return (
-        <Grid
-            direction="row"
-            wrap='nowrap'
-            justifyContent="space-between"
-            alignItems="center"
-            container
-            sx={{
-                overflow: 'hidden',
-                overflowX: 'scroll'
-            }}
-            gridAutoFlow={'column'}
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 2, sm: 2, md: 12 }}
-        >
-            {
-                data.map((item, id) => {
-                    return <Grid item xs={2} sm={2} md={3} key={`${item.title}_${id}`}>
-                        <DashboardCard title={item.title} icon={item.icon} content={item.content} key={`${item.title}_${id}`} />
-                    </Grid>
-                })
-            }
 
-        </Grid >
+        loading ? <LoadingOverlay isLoading={loading} /> :
+
+            <Grid
+                direction="row"
+                wrap='nowrap'
+                justifyContent="space-between"
+                alignItems="center"
+                container
+                sx={{
+                    overflow: 'hidden',
+                    overflowX: isMobile ? 'scroll' : 'hidden',
+                }}
+                gridAutoFlow={'column'}
+                spacing={{ xs: 6, md: 6 }}
+                columns={{ xs: 12, sm: 12, md: 12 }}
+
+            >
+                {
+                    data?.dashboard.map((item, id) => {
+                        return <Grid item xs={12} sm={12} md={12} key={`${item.title}_${id}`}>
+                            <DashboardCard title={item.title} icon={item.icon} content={item.content} key={`${item.title}_${id}`} />
+                        </Grid>
+                    })
+                }
+
+            </Grid >
 
     )
 }

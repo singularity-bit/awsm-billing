@@ -1,6 +1,5 @@
 import { Typography } from '@mui/material';
 import React, { FC } from 'react'
-import { device } from '../../models';
 import * as S from './Tile.styles'
 type Props = {
   title?: string;

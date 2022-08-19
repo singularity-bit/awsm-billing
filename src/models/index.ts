@@ -161,6 +161,9 @@ export type DashboardCardProps={
   icon?: 'GroupOutlinedIcon' | 'ReceiptOutlinedIcon' | 'DownloadingOutlinedIcon' | 'PaidOutlinedIcon'
   content?: string | number
 }
+export type DashboardRequestType={
+  dashboard:DashboardCardProps[]
+}
 
 export type TransactionProps={
   customerName:string;

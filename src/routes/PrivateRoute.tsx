@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Navigate, Outlet, RouteProps } from "react-router-dom";
 import LoadingOverlay from "../Components/LoadingOverlay";
 import { useAppSelector } from "../hooks/redux";
-import { useAction } from "../hooks/requests/useAction";
+import { useAction } from "../hooks/useAction";
 import { usePublicUserData } from "../hooks/requests/usePublicUserData";
 
 

@@ -51,7 +51,22 @@ export const Homepage: React.FC = () => {
             invoiceNr: "76058-103",
             project: "Jamia",
             status: "PAID"
-        }
+        }, {
+            amount: "$22264.85",
+            customerName: "Bondon Cadding",
+            date: "7/5/2022",
+            invoiceNr: "51720-653",
+            project: "Vimbo",
+            status: "PENDING"
+        },
+        {
+            amount: "$20104.59",
+            customerName: "Royce Mirams",
+            date: "3/31/2022",
+            invoiceNr: "48951-6032",
+            project: "Skyvu",
+            status: "PAID"
+        },
     ]
     return (
         <Grid container direction="column" wrap='nowrap' spacing={6}>
@@ -71,7 +86,7 @@ export const Homepage: React.FC = () => {
                     </Box>
                 </Headline>
             </Grid>
-            <Grid item>
+            <Grid item overflow={'auto'}>
                 <Dashboard />
             </Grid>
             <Grid item>

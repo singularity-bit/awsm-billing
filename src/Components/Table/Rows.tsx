@@ -1,5 +1,5 @@
 import { Chip, createTheme, Link, TableCell, TableRow, ThemeProvider, Typography } from "@mui/material"
-import React from "react"
+import React, { useMemo } from "react"
 import { TransactionProps } from "../../models"
 import StackItem from "../StackItem"
 import { chipColor } from "./utils"
@@ -7,24 +7,27 @@ import { chipColor } from "./utils"
 type Props = {
     rows: TransactionProps[]
 }
-export const renderRows = ({ rows }: Props, { rowsPerPage = 0 }, { page = 0 }) => {
-    const theme = createTheme({
-        palette: {
-            success: {
-                main: '#F1FEF3',
-                contrastText: '#2e7d32'
-            },
-            warning: {
-                main: '#FFF9F4',
-                contrastText: '#ef6c00'
-            }
-
-
+const theme = createTheme({
+    palette: {
+        success: {
+            main: '#F1FEF3',
+            contrastText: '#2e7d32'
         },
-    })
+        warning: {
+            main: '#FFF9F4',
+            contrastText: '#ef6c00'
+        }
+
+
+    },
+})
+export const Rows = ({ rows }: Props, rowsPerPage = 0, page = 0) => {
+
+    const memoRows = useMemo(() => rows, [rows])
+
     const ee = (rowsPerPage > 0
-        ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-        : rows)
+        ? memoRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+        : memoRows)
     return ee.map((row, id) => {
         return (
             <ThemeProvider theme={theme}>
